@@ -14,7 +14,18 @@ const Chart: React.FC = (): JSX.Element => {
             <Line
                 data={{
                     labels: dates,
-                    datasets
+                    datasets:
+                        datasets.length > 0
+                            ? datasets
+                            : [
+                                  {
+                                      data: [10, 20, 30],
+                                      backgroundColor: 'transparent',
+                                      borderColor: 'transparent',
+                                      pointBackgroundColor: 'transparent',
+                                      pointRadius: 0
+                                  }
+                              ]
                 }}
             />
         </div>

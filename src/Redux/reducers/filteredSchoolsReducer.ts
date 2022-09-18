@@ -79,10 +79,16 @@ const filteredSchoolsSlice = createSlice({
         
     } ,
     setDataSets:(state)=>{
-        state.datasets = state.nestedFilterInsideAllSchools.map(
-            (el)=>({...sortDataForSchool(el.arr),borderColor:el.color})
-        )
-    }
+        
+            state.datasets = state.nestedFilterInsideAllSchools.map(
+                (el)=>({...sortDataForSchool(el.arr),borderColor:el.color})
+            )
+        
+    },
+    resetDataSets:(state)=>{
+        state.datasets = []
+    
+}
     
   },
 })
@@ -95,5 +101,5 @@ const filteredSchoolsSlice = createSlice({
 export const selectFilteredSchools = (state: RootState) => state.filteredSchoolsReducer
 
 export default filteredSchoolsSlice.reducer;
-export const {getCountryFilter,getCampFilter,getSchoolFilter,filterByCountry,filterByCamp,filterBySchool,toggleNestedFilter,setDataSets} = filteredSchoolsSlice.actions
+export const {resetDataSets,getCountryFilter,getCampFilter,getSchoolFilter,filterByCountry,filterByCamp,filterBySchool,toggleNestedFilter,setDataSets} = filteredSchoolsSlice.actions
 

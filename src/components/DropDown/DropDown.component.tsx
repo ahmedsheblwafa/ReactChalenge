@@ -7,8 +7,10 @@ import {
     filterByCountry,
     filterByCamp,
     filterBySchool,
-    setDataSets
+    setDataSets,
+    resetDataSets
 } from '../../Redux/reducers/filteredSchoolsReducer'
+import { setLoading, removeLoading } from '../../Redux/reducers/schoolsReducer'
 
 interface Iprops {
     label: label
@@ -21,6 +23,8 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
         ['country']: (e: { target: { value: string } }) => {
             dispatch(filterByCountry({ all: allSchools, country: e.target.value }))
             dispatch(getCampFilter())
+            dispatch(setDataSets())
+            dispatch(resetDataSets())
         },
         ['camp']: (e: { target: { value: string } }) => {
             dispatch(filterByCamp(e.target.value))
