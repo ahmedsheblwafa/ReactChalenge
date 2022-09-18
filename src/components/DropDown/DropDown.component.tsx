@@ -45,6 +45,8 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
                 <div className="col-9">
                     <select onChange={selectHandeler[label]} className="form-control" name={label} id={label}>
                         {label == 'school' && schools.length != 0 ? <option>all schools</option> : ''}
+
+                        {label !== 'school' ? <option value=""></option> : ''}
                         {data.map((el: string, i: number) => (
                             <option key={i} value={el}>
                                 {el}
