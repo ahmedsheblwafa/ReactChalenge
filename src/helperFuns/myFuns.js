@@ -1,0 +1,45 @@
+export const dates = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+export const colors = ["red","green","black","brown","blue","tomato"]
+
+
+// takes in an arr of one school data and sorts it and adds duplicates returns object dataset 
+export const sortDataForSchool = (arr)=>{
+    const newArr = []; 
+    // array of lessons per month for one school
+    for(let i=0;i<dates.length;i++){
+        newArr[i]={
+            month:dates[i],
+            lessons:arr.filter(el=>el.month==dates[i]).reduce((pv,cr)=>pv+cr.lessons,0)
+        }
+    }
+    return ({
+            label: '',
+            data: newArr.map(el=>el.lessons),
+            backgroundColor: 'red',
+            borderColor: 'red',
+            pointBackgroundColor: 'white',
+            pointRadius: 10 
+    })
+}
+
+// takes in array and a filter ex:
+//  need to get countries in all data 
+//  need to get camps in a country 
+//  need to get schools in a camp 
+export const getFilter = (arr,filter)=>{   
+    const newArr = []
+    let exist=false
+    for(let i=0;i<arr.length;i++){
+        exist =false
+        for(let j=0;j<newArr.length;j++){
+           if (arr[i][filter]==newArr[j]){
+            exist = true
+            break
+           }
+        }
+        if(!exist){
+            newArr.push(arr[i][filter]) 
+        }
+    }
+    return newArr
+}
