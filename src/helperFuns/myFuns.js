@@ -31,13 +31,13 @@ export const getFilter = (arr,filter)=>{
     for(let i=0;i<arr.length;i++){
         exist =false
         for(let j=0;j<newArr.length;j++){
-           if (arr[i][filter]==newArr[j]){
+           if (arr[i][filter]==newArr[j].name){
             exist = true
             break
            }
         }
         if(!exist){
-            newArr.push(arr[i][filter]) 
+            newArr.push({name:arr[i][filter],id:arr[i].id}) 
         }
     }
     return newArr

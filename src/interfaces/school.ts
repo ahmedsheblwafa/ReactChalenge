@@ -64,9 +64,9 @@ export interface filteredSchoolsReducerType{
     ["nestedFilterInsideAllSchools"]:{arr:School[],color:string}[],
     ["campFilteredScools"]:School[],
     ["schoolFilteredScools"]:{arr:School[],color:string}[],
-    ["country"]:string[],
-    ["camp"]:string[],
-    ["school"]:string[],
+    ["country"]:{name:string,id:string}[],
+    ["camp"]:{name:string,id:string}[],
+    ["school"]:{name:string,id:string}[],
     ["nestedSchools"]:string[],
     ["datasets"]:dataSets
 }

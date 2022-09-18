@@ -47,8 +47,8 @@ const filteredSchoolsSlice = createSlice({
     },
     filterBySchool: (state, action: PayloadAction<string>) => {
         if(action.payload == "all schools"){
-            state.schoolFilteredScools = state.school.map((school,i)=>({arr:state.campFilteredScools.filter(el=>el.school==school),color:colors[i]}))
-            state.nestedSchools = state.school
+            state.schoolFilteredScools = state.school.map((school,i)=>({arr:state.campFilteredScools.filter(el=>el.school==school.name),color:colors[i]}))
+            state.nestedSchools = state.school.map(el=>el.name)
         }else{            
             state.schoolFilteredScools =[{arr:state.campFilteredScools.filter((el)=>el.school==action.payload),color:colors[0]}]
             state.nestedSchools = [state.schoolFilteredScools[0].arr[0].school]
