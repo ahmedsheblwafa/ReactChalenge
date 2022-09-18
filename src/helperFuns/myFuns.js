@@ -17,7 +17,9 @@ export const sortDataForSchool = (arr)=>{
             backgroundColor: 'red',
             borderColor: 'red',
             pointBackgroundColor: 'white',
-            pointRadius: 5 
+            pointRadius: 5 ,
+            pointHoverBackgroundColor:"",
+            pointHoverRadius:8
     })
 }
 

@@ -23,7 +23,9 @@ const Chart: React.FC = (): JSX.Element => {
                                       backgroundColor: 'transparent',
                                       borderColor: 'transparent',
                                       pointBackgroundColor: 'transparent',
-                                      pointRadius: 0
+                                      pointRadius: 0,
+                                      pointHoverBackgroundColor: '',
+                                      pointHoverRadius: 8
                                   }
                               ]
                 }}

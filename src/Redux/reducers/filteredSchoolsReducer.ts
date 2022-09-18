@@ -81,7 +81,7 @@ const filteredSchoolsSlice = createSlice({
     setDataSets:(state)=>{
         
             state.datasets = state.nestedFilterInsideAllSchools.map(
-                (el)=>({...sortDataForSchool(el.arr),borderColor:el.color})
+                (el)=>({...sortDataForSchool(el.arr),borderColor:el.color,pointHoverBackgroundColor:el.color})
             )
         
     },

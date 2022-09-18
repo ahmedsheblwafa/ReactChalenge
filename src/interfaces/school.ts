@@ -77,6 +77,8 @@ type dataSet = {
         backgroundColor: string,
         borderColor: string,
         pointBackgroundColor: string,
-        pointRadius: number
+        pointRadius: number,
+        pointHoverBackgroundColor:string,
+        pointHoverRadius:number
 }
 export type dataSets =  dataSet[]
