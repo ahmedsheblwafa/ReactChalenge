@@ -13,12 +13,11 @@ export const sortDataForSchool = (arr)=>{
         }
     }
     return ({
-            label: '',
             data: newArr.map(el=>el.lessons),
             backgroundColor: 'red',
             borderColor: 'red',
             pointBackgroundColor: 'white',
-            pointRadius: 10 
+            pointRadius: 5 
     })
 }
 

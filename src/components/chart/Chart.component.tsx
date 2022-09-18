@@ -3,17 +3,8 @@ import { dataSets } from '../../interfaces/school'
 import { dates } from '../../helperFuns/myFuns'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../Redux/store'
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-} from 'chart.js'
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip } from 'chart.js'
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip)
 
 const Chart: React.FC = (): JSX.Element => {
     const datasets: dataSets = useSelector((state: RootState) => state.filteredSchoolsReducer.datasets)

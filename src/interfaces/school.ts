@@ -73,7 +73,6 @@ export interface filteredSchoolsReducerType{
 
 
 type dataSet = {
-        label: string,
         data: number[],
         backgroundColor: string,
         borderColor: string,
