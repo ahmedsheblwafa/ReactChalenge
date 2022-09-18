@@ -19,7 +19,7 @@ const Chart: React.FC = (): JSX.Element => {
                             ? datasets
                             : [
                                   {
-                                      data: [10, 20, 30],
+                                      data: [],
                                       backgroundColor: 'transparent',
                                       borderColor: 'transparent',
                                       pointBackgroundColor: 'transparent',
