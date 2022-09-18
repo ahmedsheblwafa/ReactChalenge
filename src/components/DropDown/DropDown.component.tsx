@@ -10,7 +10,6 @@ import {
     setDataSets,
     resetDataSets
 } from '../../Redux/reducers/filteredSchoolsReducer'
-import { setLoading, removeLoading } from '../../Redux/reducers/schoolsReducer'
 
 interface Iprops {
     label: label
