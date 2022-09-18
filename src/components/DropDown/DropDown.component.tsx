@@ -18,17 +18,17 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
     const allSchools = useSelector((state: RootState) => state.allSchoolsReducer.allSchools)
     const schools = useSelector((state: RootState) => state.filteredSchoolsReducer.school)
     const selectHandeler = {
-        ['country']: (e: { target: { value: any } }) => {
+        ['country']: (e: { target: { value: string } }) => {
             dispatch(filterByCountry({ all: allSchools, country: e.target.value }))
             dispatch(getCampFilter())
         },
-        ['camp']: (e: { target: { value: any } }) => {
+        ['camp']: (e: { target: { value: string } }) => {
             dispatch(filterByCamp(e.target.value))
             dispatch(getSchoolFilter())
             dispatch(filterBySchool('all schools'))
             dispatch(setDataSets())
         },
-        ['school']: (e: { target: { value: any } }) => {
+        ['school']: (e: { target: { value: string } }) => {
             dispatch(filterBySchool(e.target.value))
             dispatch(setDataSets())
         }
