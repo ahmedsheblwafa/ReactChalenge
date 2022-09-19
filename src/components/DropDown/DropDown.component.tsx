@@ -43,7 +43,9 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
         <div className="col-lg-3 my-3 my-lg-0">
             <div className="row justify-content-center align-items-center">
                 <div className="col-3">
-                    <label htmlFor={label}>{label}</label>
+                    <label className="text-capitalize" htmlFor={label}>
+                        {label}
+                    </label>
                 </div>
                 <div className="col-9">
                     <select onChange={selectHandeler[label]} className="form-control" name={label} id={label}>

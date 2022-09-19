@@ -12,6 +12,14 @@ const Chart: React.FC = (): JSX.Element => {
     return (
         <div className="col-lg-9">
             <Line
+                options={{
+                    scales: {
+                        y: {
+                            min: 0,
+                            suggestedMax: 500
+                        }
+                    }
+                }}
                 data={{
                     labels: dates,
                     datasets:

@@ -1,5 +1,11 @@
 export const dates = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
-export const colors = ["red","green","black","brown","blue","tomato"]
+export const colors = (()=>{
+    const arr =["green","blue","red","Orange"]
+    for(var i =0;i<30;i++){
+        arr.push(`#${Math.ceil(Math.random()*999999)}`)
+    }
+    return arr
+})()
 
 
 // takes in an arr of one school data and sorts it and adds duplicates returns object dataset 
