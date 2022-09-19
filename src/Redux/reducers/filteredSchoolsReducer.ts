@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 import {School} from "../../interfaces/school"
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {getFilter,sortDataForSchool,colors} from "../../helperFuns/myFuns"
+import {getFilter,sortDataForSchool,colors,dates} from "../../helperFuns/myFuns"
 import {filteredSchoolsReducerType} from "../../interfaces/school"
 
 
@@ -19,7 +19,8 @@ const initialState: filteredSchoolsReducerType = {
     country:[],
     camp:[],
     school:[],
-    datasets:[]
+    datasets:[],
+    elementsToSecondPage:[]
 }
 
 const filteredSchoolsSlice = createSlice({
@@ -88,7 +89,21 @@ const filteredSchoolsSlice = createSlice({
     resetDataSets:(state)=>{
         state.datasets = []
     
-}
+    },
+    passDataToSecondpage:(state,action: PayloadAction<{dataSetIndex: number,monthIndex: number}[]>)=>{
+        state.elementsToSecondPage = action.payload.map(el=>{
+            const currentDataSet = state.datasets[el.dataSetIndex]
+            return(
+                {lessons : currentDataSet.data[el.monthIndex],
+                camp:state.nestedFilterInsideAllSchools[0].arr[0].camp,
+                country:state.nestedFilterInsideAllSchools[0].arr[0].country,
+                school:state.nestedFilterInsideAllSchools[el.dataSetIndex].arr[0].school,
+                id:"",
+                month:dates[el.monthIndex]
+            }           
+                 )
+       })
+    }
     
   },
 })
@@ -101,5 +116,5 @@ const filteredSchoolsSlice = createSlice({
 export const selectFilteredSchools = (state: RootState) => state.filteredSchoolsReducer
 
 export default filteredSchoolsSlice.reducer;
-export const {resetDataSets,getCountryFilter,getCampFilter,getSchoolFilter,filterByCountry,filterByCamp,filterBySchool,toggleNestedFilter,setDataSets} = filteredSchoolsSlice.actions
+export const {passDataToSecondpage,resetDataSets,getCountryFilter,getCampFilter,getSchoolFilter,filterByCountry,filterByCamp,filterBySchool,toggleNestedFilter,setDataSets} = filteredSchoolsSlice.actions
 

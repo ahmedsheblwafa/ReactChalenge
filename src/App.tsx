@@ -1,9 +1,7 @@
 import './App.css'
-import ChartComponent from './components/chart/Chart.component'
-import FilterationSection from './components/filterationsection/FilterationSection.component'
-import SchoolsSection from './components/schools/Schools.component'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from './Redux/store'
+import IntegratedChart from './components/main/main.component'
+import { Routes, Route } from 'react-router'
+import Datapage from './components/datapage/Datapage.component'
 import {
     getAllSchools,
     setLoading,
@@ -14,11 +12,9 @@ import {
 } from './Redux/reducers/schoolsReducer'
 import { getCountryFilter } from './Redux/reducers/filteredSchoolsReducer'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const App: React.FC = (): JSX.Element => {
-    const loading = useSelector((state: RootState) => state.allSchoolsReducer.loading)
-    const error = useSelector((state: RootState) => state.allSchoolsReducer.error)
-    const errorMsg = useSelector((state: RootState) => state.allSchoolsReducer.errorMsg)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(setLoading())
@@ -37,37 +33,10 @@ const App: React.FC = (): JSX.Element => {
             })
     }, [])
     return (
-        <>
-            <div className="container-fluid p-5">
-                <FilterationSection />
-                {loading && !error ? (
-                    <div className="row vh-100 justify-content-center align-items-center">
-                        <div className="spinner-border text-primary" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                ) : (
-                    ''
-                )}
-                {!loading && !error ? (
-                    <div className="row bg-white justify-content-between">
-                        <ChartComponent />
-                        <SchoolsSection />
-                    </div>
-                ) : (
-                    ''
-                )}
-                {error ? (
-                    <div className="row vh-100 justify-content-center align-items-center">
-                        <div className="alert alert-danger" role="alert">
-                            {errorMsg}
-                        </div>
-                    </div>
-                ) : (
-                    ''
-                )}
-            </div>
-        </>
+        <Routes>
+            <Route path="/" element={<IntegratedChart />} />
+            <Route path="/points-data" element={<Datapage />} />
+        </Routes>
     )
 }
 
