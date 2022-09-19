@@ -35,7 +35,6 @@ const filteredSchoolsSlice = createSlice({
   reducers:{
     getCountryFilter: (state,action:PayloadAction<School[]>) => {
       state.country = getFilter(action.payload,"country")
-      state.filter.country = state.country[0].name
       state.camp = []
       state.school = []
     },
