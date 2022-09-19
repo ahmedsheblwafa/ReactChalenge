@@ -10,6 +10,7 @@ import {
     removeError,
     setErrorMsg
 } from './Redux/reducers/schoolsReducer'
+import { getCountryFilter } from './Redux/reducers/filteredSchoolsReducer'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -23,6 +24,7 @@ const App: React.FC = (): JSX.Element => {
                 dispatch(removeLoading())
                 dispatch(removeError())
                 dispatch(getAllSchools(data))
+                dispatch(getCountryFilter(data))
             })
             .catch((err) => {
                 dispatch(setError())
