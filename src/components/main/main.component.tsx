@@ -1,7 +1,7 @@
 import ChartComponent from '../chart/Chart.component'
 import FilterationSection from '../filterationsection/FilterationSection.component'
 import SchoolsSection from '../schools/Schools.component'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { RootState } from '../../Redux/store'
 
 const IntegratedChart: React.FC = (): JSX.Element => {
