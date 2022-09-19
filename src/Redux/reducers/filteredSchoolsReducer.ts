@@ -20,7 +20,12 @@ const initialState: filteredSchoolsReducerType = {
     camp:[],
     school:[],
     datasets:[],
-    elementsToSecondPage:[]
+    elementsToSecondPage:[],
+    filter:{
+        school:"",
+        country:"",
+        camp:""
+    }
 }
 
 const filteredSchoolsSlice = createSlice({
@@ -30,6 +35,7 @@ const filteredSchoolsSlice = createSlice({
   reducers:{
     getCountryFilter: (state,action:PayloadAction<School[]>) => {
       state.country = getFilter(action.payload,"country")
+      state.filter.country = state.country[0].name
       state.camp = []
       state.school = []
     },
@@ -103,7 +109,16 @@ const filteredSchoolsSlice = createSlice({
             }           
                  )
        })
-    }
+    },
+    setCountryFilter:(state,action: PayloadAction<string>)=>{
+        state.filter.country = action.payload
+    },
+    setCampFilter:(state,action: PayloadAction<string>)=>{
+        state.filter.camp = action.payload
+    },
+    setSchoolFilter:(state,action: PayloadAction<string>)=>{
+        state.filter.school = action.payload
+    },
     
   },
 })
@@ -116,5 +131,5 @@ const filteredSchoolsSlice = createSlice({
 export const selectFilteredSchools = (state: RootState) => state.filteredSchoolsReducer
 
 export default filteredSchoolsSlice.reducer;
-export const {passDataToSecondpage,resetDataSets,getCountryFilter,getCampFilter,getSchoolFilter,filterByCountry,filterByCamp,filterBySchool,toggleNestedFilter,setDataSets} = filteredSchoolsSlice.actions
+export const {setCountryFilter,setCampFilter,setSchoolFilter,passDataToSecondpage,resetDataSets,getCountryFilter,getCampFilter,getSchoolFilter,filterByCountry,filterByCamp,filterBySchool,toggleNestedFilter,setDataSets} = filteredSchoolsSlice.actions
 

@@ -8,7 +8,10 @@ import {
     filterByCamp,
     filterBySchool,
     setDataSets,
-    resetDataSets
+    resetDataSets,
+    setCountryFilter,
+    setCampFilter,
+    setSchoolFilter
 } from '../../Redux/reducers/filteredSchoolsReducer'
 
 interface Iprops {
@@ -24,19 +27,24 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
             dispatch(getCampFilter())
             dispatch(setDataSets())
             dispatch(resetDataSets())
+            dispatch(setCountryFilter(e.target.value))
         },
         ['camp']: (e: { target: { value: string } }) => {
             dispatch(filterByCamp(e.target.value))
             dispatch(getSchoolFilter())
             dispatch(filterBySchool('all schools'))
             dispatch(setDataSets())
+            dispatch(setCampFilter(e.target.value))
         },
         ['school']: (e: { target: { value: string } }) => {
             dispatch(filterBySchool(e.target.value))
             dispatch(setDataSets())
+            dispatch(setSchoolFilter(e.target.value))
         }
     }
+
     const data = useSelector((state: RootState) => state.filteredSchoolsReducer[label])
+    const filter = useSelector((state: RootState) => state.filteredSchoolsReducer.filter)
     const dispatch = useDispatch()
 
     return (
@@ -48,15 +56,23 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
                     </label>
                 </div>
                 <div className="col-9">
-                    <select onChange={selectHandeler[label]} className="form-control" name={label} id={label}>
+                    <select
+                        value={filter[label]}
+                        onChange={selectHandeler[label]}
+                        className="form-control"
+                        name={label}
+                        id={label}
+                    >
                         {label == 'school' && schools.length != 0 ? <option>all schools</option> : ''}
 
                         {label !== 'school' ? <option value="">select {label}</option> : ''}
-                        {data.map((el) => (
-                            <option key={el.id} value={el.name}>
-                                {el.name}
-                            </option>
-                        ))}
+                        {data.map((el) => {
+                            return (
+                                <option key={el.id} value={el.name}>
+                                    {el.name}
+                                </option>
+                            )
+                        })}
                     </select>
                 </div>
             </div>

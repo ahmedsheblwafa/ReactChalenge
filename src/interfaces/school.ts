@@ -69,7 +69,12 @@ export interface filteredSchoolsReducerType{
     ["school"]:{name:string,id:string}[],
     ["nestedSchools"]:string[],
     ["datasets"]:dataSets,
-    ["elementsToSecondPage"]:School[]
+    ["elementsToSecondPage"]:School[],
+    ["filter"]:{
+        school:string,
+        country:string,
+        camp:string
+    }
 }
 
 
