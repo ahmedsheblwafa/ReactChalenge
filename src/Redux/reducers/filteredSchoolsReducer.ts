@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
-import { School } from '../../interfaces/school'
+import type { RootState } from '@redux/store'
+import { School } from '@interfaces/school'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { getFilter, sortDataForSchool, colors, dates } from '../../helperFuns/myFuns'
-import { filteredSchoolsReducerType } from '../../interfaces/school'
+import { getFilter, sortDataForSchool, colors, dates } from '@helpers/myFuns'
+import { filteredSchoolsReducerType } from '@interfaces/school'
 
 // Define the initial state using that type
 const initialState: filteredSchoolsReducerType = {

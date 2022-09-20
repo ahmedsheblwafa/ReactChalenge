@@ -1,11 +1,11 @@
 import { Line, getElementAtEvent } from 'react-chartjs-2'
 import { MouseEventHandler, useRef } from 'react'
-import { dataSets } from '../../interfaces/school'
-import { dates } from '../../helperFuns/myFuns'
+import { dataSets } from '@interfaces/school'
+import { dates } from '@helpers/myFuns'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../../Redux/store'
+import { RootState } from '@redux/store'
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip } from 'chart.js'
-import { passDataToSecondpage } from '../../Redux/reducers/filteredSchoolsReducer'
+import { passDataToSecondpage } from '@redux/reducers/filteredSchoolsReducer'
 import { useNavigate } from 'react-router-dom'
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip)
 

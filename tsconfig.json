@@ -1,5 +1,17 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+        "@components/*": [
+            "./src/components/*"
+          ],"@helpers/*": [
+            "./src/helperFuns/*"
+          ],"@interfaces/*": [
+            "./src/interfaces/*"
+          ],"@redux/*": [
+              "./src/Redux/*"
+          ]
+    },
     "target": "es5",
     "lib": [
       "dom",

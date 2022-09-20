@@ -1,7 +1,7 @@
 import './App.css'
-import IntegratedChart from './components/main/main.component'
+import IntegratedChart from '@components/main/main.component'
 import { Routes, Route } from 'react-router'
-import Datapage from './components/datapage/Datapage.component'
+import Datapage from '@components/datapage/Datapage.component'
 import {
     getAllSchools,
     setLoading,
@@ -9,8 +9,8 @@ import {
     setError,
     removeError,
     setErrorMsg
-} from './Redux/reducers/schoolsReducer'
-import { getCountryFilter } from './Redux/reducers/filteredSchoolsReducer'
+} from '@redux/reducers/schoolsReducer'
+import { getCountryFilter } from '@redux/reducers/filteredSchoolsReducer'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 

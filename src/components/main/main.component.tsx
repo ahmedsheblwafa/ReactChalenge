@@ -1,8 +1,8 @@
-import ChartComponent from '../chart/Chart.component'
-import FilterationSection from '../filterationsection/FilterationSection.component'
-import SchoolsSection from '../schools/Schools.component'
+import ChartComponent from '@components/chart/Chart.component'
+import FilterationSection from '@components/filterationsection/FilterationSection.component'
+import SchoolsSection from '@components/schools/Schools.component'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../Redux/store'
+import { RootState } from '@redux/store'
 
 const IntegratedChart: React.FC = (): JSX.Element => {
     const loading = useSelector((state: RootState) => state.allSchoolsReducer.loading)

@@ -1,9 +1,9 @@
 import './schools.styles.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../../Redux/store'
+import { RootState } from '@redux/store'
 import { useEffect, useState } from 'react'
-import { colors } from '../../helperFuns/myFuns'
-import { toggleNestedFilter, setDataSets } from '../../Redux/reducers/filteredSchoolsReducer'
+import { colors } from '@helpers/myFuns'
+import { toggleNestedFilter, setDataSets } from '@redux/reducers/filteredSchoolsReducer'
 
 const Schools: React.FC = (): JSX.Element => {
     const camp = useSelector((state: RootState) => {

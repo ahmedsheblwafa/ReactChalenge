@@ -1,4 +1,4 @@
-import DropDownComponent from '../DropDown/DropDown.component'
+import DropDownComponent from '@components/DropDown/DropDown.component'
 export enum label {
     country = 'country',
     camp = 'camp',

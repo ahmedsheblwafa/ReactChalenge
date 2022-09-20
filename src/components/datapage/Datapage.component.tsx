@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { RootState } from '../../Redux/store'
+import { RootState } from '@redux/store'
 import { Link } from 'react-router-dom'
 
 const Datapage: React.FC = (): JSX.Element => {

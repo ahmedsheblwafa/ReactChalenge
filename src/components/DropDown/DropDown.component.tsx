@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from '../../Redux/store'
-import { label } from '../filterationsection/FilterationSection.component'
+import { RootState } from '@redux/store'
+import { label } from '@components/filterationsection/FilterationSection.component'
 import {
     getCampFilter,
     getSchoolFilter,
@@ -12,7 +12,7 @@ import {
     setCountryFilter,
     setCampFilter,
     setSchoolFilter
-} from '../../Redux/reducers/filteredSchoolsReducer'
+} from '@redux/reducers/filteredSchoolsReducer'
 
 interface Iprops {
     label: label
