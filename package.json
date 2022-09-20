@@ -29,7 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "format": "prettier 'src/**/*.{tsx,ts}'",
+    "format": "prettier --write 'src/**/*.{tsx,ts}'",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{tsx,ts}'"
   },
