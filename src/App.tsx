@@ -10,11 +10,24 @@ import {
     removeError,
     setErrorMsg
 } from '@redux/reducers/schoolsReducer'
-import { getCountryFilter } from '@redux/reducers/filteredSchoolsReducer'
+import {
+    filterByCamp,
+    filterByCountry,
+    filterBySchool,
+    getCampFilter,
+    getCountryFilter,
+    getSchoolFilter,
+    setDataSets
+} from '@redux/reducers/filteredSchoolsReducer'
+import { RootState } from '@redux/store'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const App: React.FC = (): JSX.Element => {
+    const filter = useSelector((state: RootState) => state.filteredSchoolsReducer.filter)
+    const countryFilteredSchools = useSelector((state: RootState) => state.filteredSchoolsReducer.countryFilteredScools)
+    const allSchools = useSelector((state: RootState) => state.allSchoolsReducer.allSchools)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(setLoading())
@@ -32,6 +45,7 @@ const App: React.FC = (): JSX.Element => {
                 dispatch(setErrorMsg((err as Error).message))
             })
     }, [])
+
     return (
         <Routes>
             <Route path="/" element={<IntegratedChart />} />

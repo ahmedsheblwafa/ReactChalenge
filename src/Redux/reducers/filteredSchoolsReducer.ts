@@ -34,18 +34,27 @@ const filteredSchoolsSlice = createSlice({
             state.camp = []
             state.school = []
         },
-        getCampFilter: (state) => {
+        getCampFilter: (state,action?: PayloadAction<boolean>) => {
             state.camp = getFilter(state.countryFilteredScools, 'camp')
+            if(action?.payload){
+                state.filter.camp = state.camp[0]?state.camp[0].name:""
+                state.filter.school = "all schools"
+            }
             state.school = []
         },
         getSchoolFilter: (state) => {
             state.school = getFilter(state.campFilteredScools, 'school')
         },
-        filterByCountry: (state, action: PayloadAction<{ all: School[]; country: string }>) => {
-            state.countryFilteredScools = action.payload.all.filter((el) => el.country == action.payload.country)
+        filterByCountry: (state, action: PayloadAction<{ all: School[]}>) => {
+            state.countryFilteredScools = action.payload.all.filter((el) => el.country == state.filter.country)
+            
+            
         },
-        filterByCamp: (state, action: PayloadAction<string>) => {
-            state.campFilteredScools = state.countryFilteredScools.filter((el) => el.camp == action.payload)
+        filterByCamp: (state) => {
+            state.campFilteredScools = state.countryFilteredScools.filter((el) => el.camp == state.filter.camp)
+            console.log(state.campFilteredScools)
+            
+            // state.school = getFilter(state.campFilteredScools, 'school')
         },
         filterBySchool: (state, action: PayloadAction<string>) => {
             if (action.payload == 'all schools') {
@@ -107,6 +116,7 @@ const filteredSchoolsSlice = createSlice({
         },
         setCampFilter: (state, action: PayloadAction<string>) => {
             state.filter.camp = action.payload
+            state.filter.school="all schools"
         },
         setSchoolFilter: (state, action: PayloadAction<string>) => {
             state.filter.school = action.payload

@@ -13,6 +13,7 @@ import {
     setCampFilter,
     setSchoolFilter
 } from '@redux/reducers/filteredSchoolsReducer'
+import { useEffect } from 'react'
 
 interface Iprops {
     label: label
@@ -23,18 +24,18 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
     const schools = useSelector((state: RootState) => state.filteredSchoolsReducer.school)
     const selectHandeler = {
         ['country']: (e: { target: { value: string } }) => {
-            dispatch(filterByCountry({ all: allSchools, country: e.target.value }))
-            dispatch(getCampFilter())
+            dispatch(setCountryFilter(e.target.value))
+            dispatch(filterByCountry({ all: allSchools }))
+            dispatch(getCampFilter(false))
             dispatch(setDataSets())
             dispatch(resetDataSets())
-            dispatch(setCountryFilter(e.target.value))
         },
         ['camp']: (e: { target: { value: string } }) => {
-            dispatch(filterByCamp(e.target.value))
+            dispatch(setCampFilter(e.target.value))
+            dispatch(filterByCamp())
             dispatch(getSchoolFilter())
             dispatch(filterBySchool('all schools'))
             dispatch(setDataSets())
-            dispatch(setCampFilter(e.target.value))
         },
         ['school']: (e: { target: { value: string } }) => {
             dispatch(filterBySchool(e.target.value))
@@ -56,6 +57,7 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
                     </label>
                 </div>
                 <div className="col-9">
+                    <p>{filter.camp}</p>
                     <select
                         value={filter[label]}
                         onChange={selectHandeler[label]}
@@ -63,9 +65,7 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
                         name={label}
                         id={label}
                     >
-                        {label == 'school' && schools.length != 0 ? <option>all schools</option> : ''}
-
-                        {label !== 'school' ? <option value="">select {label}</option> : ''}
+                        {label !== 'school' ? <option value="">select {label}</option> : <option>all schools</option>}
                         {data.map((el) => {
                             return (
                                 <option key={el.id} value={el.name}>
