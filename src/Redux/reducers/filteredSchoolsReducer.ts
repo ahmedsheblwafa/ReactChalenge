@@ -34,26 +34,24 @@ const filteredSchoolsSlice = createSlice({
             state.camp = []
             state.school = []
         },
-        getCampFilter: (state,action?: PayloadAction<boolean>) => {
+        getCampFilter: (state, action?: PayloadAction<boolean>) => {
             state.camp = getFilter(state.countryFilteredScools, 'camp')
-            if(action?.payload){
-                state.filter.camp = state.camp[0]?state.camp[0].name:""
-                state.filter.school = "all schools"
+            if (action?.payload) {
+                state.filter.camp = state.camp[0] ? state.camp[0].name : ''
+                state.filter.school = 'all schools'
             }
             state.school = []
         },
         getSchoolFilter: (state) => {
             state.school = getFilter(state.campFilteredScools, 'school')
         },
-        filterByCountry: (state, action: PayloadAction<{ all: School[]}>) => {
+        filterByCountry: (state, action: PayloadAction<{ all: School[] }>) => {
             state.countryFilteredScools = action.payload.all.filter((el) => el.country == state.filter.country)
-            
-            
         },
         filterByCamp: (state) => {
             state.campFilteredScools = state.countryFilteredScools.filter((el) => el.camp == state.filter.camp)
             console.log(state.campFilteredScools)
-            
+
             // state.school = getFilter(state.campFilteredScools, 'school')
         },
         filterBySchool: (state, action: PayloadAction<string>) => {
@@ -116,7 +114,7 @@ const filteredSchoolsSlice = createSlice({
         },
         setCampFilter: (state, action: PayloadAction<string>) => {
             state.filter.camp = action.payload
-            state.filter.school="all schools"
+            state.filter.school = 'all schools'
         },
         setSchoolFilter: (state, action: PayloadAction<string>) => {
             state.filter.school = action.payload

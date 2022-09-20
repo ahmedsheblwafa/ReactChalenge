@@ -13,7 +13,6 @@ import {
     setCampFilter,
     setSchoolFilter
 } from '@redux/reducers/filteredSchoolsReducer'
-import { useEffect } from 'react'
 
 interface Iprops {
     label: label
@@ -21,7 +20,6 @@ interface Iprops {
 
 const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
     const allSchools = useSelector((state: RootState) => state.allSchoolsReducer.allSchools)
-    const schools = useSelector((state: RootState) => state.filteredSchoolsReducer.school)
     const selectHandeler = {
         ['country']: (e: { target: { value: string } }) => {
             dispatch(setCountryFilter(e.target.value))
