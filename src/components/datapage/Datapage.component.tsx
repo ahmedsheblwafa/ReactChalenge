@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '@redux/store'
 import { Link } from 'react-router-dom'
+import AllPointsClickedData from '@components/AllPointsClickedData/AllPointsClickedData.component'
 
 const Datapage: React.FC = (): JSX.Element => {
     const allData = useSelector((state: RootState) => state.filteredSchoolsReducer.elementsToSecondPage)
@@ -13,22 +14,7 @@ const Datapage: React.FC = (): JSX.Element => {
                     </Link>
                 </div>
                 <div className="row g-5">
-                    {allData.map((el, i) => {
-                        const { camp, country, lessons, month, school } = el
-                        return (
-                            <div key={i} className="col-md-4">
-                                <div className="card">
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">{country}</li>
-                                        <li className="list-group-item">{camp}</li>
-                                        <li className="list-group-item">{school}</li>
-                                        <li className="list-group-item">{month}</li>
-                                        <li className="list-group-item">{lessons}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        )
-                    })}
+                    <AllPointsClickedData allData={allData} />
                 </div>
             </div>
         </>

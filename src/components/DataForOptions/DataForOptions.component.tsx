@@ -5,7 +5,11 @@ type Iprops = {
 export default function DataForOptions({ label, data }: Iprops) {
     return (
         <>
-            {label !== 'school' ? <option value="">select {label}</option> : <option value="">all schools</option>}
+            {label !== 'school' ? (
+                <option value="">select {label}</option>
+            ) : (
+                <option value="all schools">all schools</option>
+            )}
             {data.map((el) => {
                 return (
                     <option key={el.id} value={el.name}>

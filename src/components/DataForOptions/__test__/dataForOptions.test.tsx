@@ -48,7 +48,7 @@ it('renders arr of schools as grp of options with same schools names', () => {
     render(<DataForOptions label="school" data={schools} />)
     screen.getAllByRole('option').forEach((el, i) => {
         if (i == 0) {
-            expect(el).toContainHTML('<option value="" >all schools</option>')
+            expect(el).toContainHTML('<option value="all schools" >all schools</option>')
         } else {
             expect(el).toContainHTML(`<option value="${schools[i - 1].name}" >${schools[i - 1].name}</option>`)
         }

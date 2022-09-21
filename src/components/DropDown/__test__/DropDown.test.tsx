@@ -35,6 +35,6 @@ describe('except for scool all renders first option to be select {label} with em
     })
     it('renders first option by label "test school"', async () => {
         render(<DropDown label={label.school} />)
-        expect(screen.getByRole('option')).toContainHTML('<option value="">all schools</option>')
+        expect(screen.getByRole('option')).toContainHTML('<option value="all schools">all schools</option>')
     })
 })
