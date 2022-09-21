@@ -13,6 +13,7 @@ import {
     setCampFilter,
     setSchoolFilter
 } from '@redux/reducers/filteredSchoolsReducer'
+import DataForOptions from '@components/DataForOptions/DataForOptions.component'
 
 interface Iprops {
     label: label
@@ -55,7 +56,6 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
                     </label>
                 </div>
                 <div className="col-9">
-                    <p>{filter.camp}</p>
                     <select
                         value={filter[label]}
                         onChange={selectHandeler[label]}
@@ -63,14 +63,7 @@ const DropDown: React.FC<Iprops> = ({ label }: Iprops): JSX.Element => {
                         name={label}
                         id={label}
                     >
-                        {label !== 'school' ? <option value="">select {label}</option> : <option>all schools</option>}
-                        {data.map((el) => {
-                            return (
-                                <option key={el.id} value={el.name}>
-                                    {el.name}
-                                </option>
-                            )
-                        })}
+                        <DataForOptions label={label} data={data} />
                     </select>
                 </div>
             </div>
