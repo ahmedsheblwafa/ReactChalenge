@@ -1,7 +1,7 @@
 import { render as renderComponent, screen } from '@testing-library/react'
 import DropDown from '@components/DropDown/DropDown.component'
 import { label } from '@components/filterationsection/FilterationSection.component'
-import { Provider, useDispatch } from 'react-redux'
+import { Provider } from 'react-redux'
 import { store } from '@redux/store'
 
 const render = (component: JSX.Element) => renderComponent(<Provider store={store}>{component}</Provider>)
@@ -23,7 +23,7 @@ describe('renders label from props correctly', () => {
     })
 })
 
-describe('renders first option to be select {label} with empty value', () => {
+describe('except for scool all renders first option to be select {label} with empty value ', () => {
     it('renders first option by label "test country"', async () => {
         render(<DropDown label={label.country} />)
         expect(screen.getByRole('option')).toContainHTML('<option value="">select country</option>')
@@ -32,5 +32,9 @@ describe('renders first option to be select {label} with empty value', () => {
     it('renders first option by label "test camp"', async () => {
         render(<DropDown label={label.camp} />)
         expect(screen.getByRole('option')).toContainHTML('<option value="">select camp</option>')
+    })
+    it('renders first option by label "test school"', async () => {
+        render(<DropDown label={label.school} />)
+        expect(screen.getByRole('option')).toContainHTML('<option value="">all schools</option>')
     })
 })
